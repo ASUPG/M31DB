@@ -4,11 +4,12 @@ M31DBEngine is a blazingly fast and easy-to-use database engine that is designed
 
 ## Features
 
-- **Easy to use:** M31DBEngine is designed with simplicity and ease-of-use in mind. Its intuitive interface and powerful API make it easy to integrate into your application and start storing and retrieving data.
+- **🔧Easy to use:** M31DBEngine is designed with simplicity and ease-of-use in mind. Its intuitive interface and powerful API make it easy to integrate into your next database and start storing and retrieving data.
 
-- **Concurrent:** M31DBEngine supports concurrent operations, allowing multiple users to read and write to the database simultaneously without blocking or slowing down performance.
+- **💻Concurrent:** M31DBEngine supports concurrent operations, allowing multiple users to read and write to the database simultaneously without blocking or slowing down performance.
 
-- **Blazingly fast:** With M31DBEngine, you can expect lightning-fast data processing speeds, even with large datasets. Its optimized algorithms and advanced caching techniques ensure that your data is always available and accessible.
+- **⚡Blazingly fast:** With M31DBEngine, you can expect lightning-fast data processing speeds, even with large datasets. Its optimized algorithms and advanced caching techniques ensure that your data is always available and accessible.
+- **📏Minimal:** At Design it is Minimal but combined with Andromeda SQL Parser(Coming Soon) it can perform powerfull yet fast queries
 
 ## Getting Started
 
