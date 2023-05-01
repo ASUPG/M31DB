@@ -99,11 +99,12 @@ func dbengine(args []string) string {
 			}
 		} else if args[2] == "table" {
 			filename := strings.Replace(args[3], "/", "\\", -1)
-			file, err := os.Create(filename)
-			println(file, "\n")
-			ferr(err)
-			err = os.WriteFile(args[0]+"\\db\\"+args[3], []byte(formatJSON("[{\"name\":\""+args[3]+"\"}]")), 0666)
-			ferr(err)
+			file, err := os.Create("db\\" + filename + ".json")
+			fmt.Println(err)
+			n, err := file.Write([]byte(formatJSON("[{\"name\":\"" + args[3] + "\"}]")))
+			print(n)
+			fmt.Println(err)
+			fmt.Println(file.Close())
 		} else {
 			fmt.Println("\033[31mError:Can't recognize what you are trying to create!")
 		}
