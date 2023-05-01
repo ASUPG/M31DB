@@ -1,5 +1,5 @@
 # M31DBEngine
-### The Project is in its beta realese so expect bugs in it
+### The Project is in its alpha realese so expect bugs in it
 ****Before using this for commercial purposes or modyfing,using it on your own projects see the [LICENSE](LICENSE)****<br>
 M31DBEngine is a blazingly fast and easy-to-use database engine that is designed to power large-scale data applications. It is the backbone of AndromedaDB, a cloud-based database service that provides high-performance data storage and retrieval for modern web applications.
 
