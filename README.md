@@ -20,7 +20,7 @@ To get started with M31DBEngine, you can follow the steps below:
 2. Create a new database using the M31DBEngine API.
 3. Start adding data to your database and querying it using the M31DBEngine API.
 
-For more detailed instructions and examples, check out the documentation at [M31DBEngine Docs](https://m31dbengine.com/docs).
+For more detailed instructions and examples, check out the documentation at [M31DBEngine Docs](docs/index.html).
 
 ## Contributing
 
