@@ -20,10 +20,10 @@ func dbengine(args []string) string {
 		errCh := make(chan error)
 		go func() {
 			datab, err := os.ReadFile(file)
-			ferr(err)
+			returnval = ferr(err)
 			mdata := formatJSON(string(datab))
 			err = os.WriteFile(file, []byte(mdata), 0644)
-			ferr(err)
+			returnval = ferr(err)
 		}()
 		go func() {
 			data, err := os.ReadFile(file)
@@ -49,10 +49,10 @@ func dbengine(args []string) string {
 		dataCh := make(chan []byte)
 		go func() {
 			datab, err := os.ReadFile(file)
-			ferr(err)
+			returnval = ferr(err)
 			mdata := formatJSON(string(datab))
 			err = os.WriteFile(file, []byte(mdata), 0644)
-			ferr(err)
+			returnval = ferr(err)
 		}()
 		errCh := make(chan error)
 		go func() {
@@ -109,6 +109,14 @@ func dbengine(args []string) string {
 			fmt.Println("\033[31mError:Can't recognize what you are trying to create!")
 		}
 
+		// case "delete":
+		// 	file := strings.Replace(args[0], "\\main.exe", "\\db\\", -1)
+		// 	file = file + args[2] + ".json"
+		// 	filecontsup, err := os.ReadFile(file)
+		// 	returnval = ferr(err)
+		// 	nfilecontsup := string(filecontsup)
+		// 	nfilecontsup = strings.Replace(nfilecontsup, "\n", "", -1)
+		// 	fmt.Println(nfilecontsup)
 	}
 	return returnval
 }

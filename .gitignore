@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 db
 Dockerfile
 .dockerignore
 LICENSE
 main.exe
-=======
-db
-Dockerfile
-.dockerignore
-LICENSE
-main.exe
->>>>>>> 3df445b (Changing to version 0.1)
 README

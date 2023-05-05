@@ -6,10 +6,11 @@ import (
 	"strings"
 )
 
-func ferr(err error) {
+func ferr(err error) string {
 	if err != nil {
-		print(err)
+		return err.Error()
 	}
+	return ""
 }
 func convandrotojson(data2 string) string {
 	json := strings.Replace(data2, ",", ",\n", -1)

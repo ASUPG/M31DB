@@ -1,3 +1,4 @@
+
 # M31DBEngine 0.2
 ### The Project is in its alpha realese so expect bugs in it
 ****Before using this for commercial purposes or modyfing,using it on your own projects see the [LICENSE](LICENSE)****<br>
@@ -24,9 +25,10 @@ For more detailed instructions and examples, check out the documentation at [M31
 
 ## Contributing
 
-M31DBEngine is an open-source project, and we welcome contributions from the community. If you would like to contribute, please check out our [contributing guidelines](https://github.com/m31dbengine/contributing) and [code of conduct](https://github.com/m31dbengine/code-of-conduct).
-
+M31DBEngine is an open-source project, and we welcome contributions from the community. If you would like to contribute, please check out our [contributing guidelines](https://github.com/m31dbengine/contributing) and [code of conduct](code-of-conduct/index.html).
+## How it Works
+M31DBEngine works in a very simple way. Basically, M31DBEngine is a CLI Tool or a  library to interact with JSON but it hides JSON from you by simplifying it to something that is easier to understand that looks like this (x='y',z='y') yeah this looks like CSV with Keys and Values insted of just Values if you want to know more checkout [How It Works?](https://m31db.github.io/how-it-works.html)
 ## License
 
-M31DBEngine is licensed under the Mozilla Public License. See the [LICENSE](LICENSE) file for details.
+M31DBEngine is licensed under the GNU General Public License V3. See the [LICENSE](LICENSE) file for details.
 
