@@ -20,10 +20,13 @@ M31DB is a blazingly fast and easy-to-use database engine that is designed to po
 To get started with M31DB, you can follow the steps below:
 
 1. Install M31DB on your local machine or server.
-2. Run 
-3. Run command  ```js
-const msg = "hello, world";
-```
+2. Run `m31 init` to initialize M31DB
+3. Run command  `m31 start` to start M31DB Server listening on port 6787
+4. Now it is all configured to access it you can make a HTTP request to Server running M31DB with the following parameters:
+    - **username**: It will be asked on initialization
+    - **password**: It will be also asked on initialization
+    - **options**: It will be the query you will run seprated by commas
+**For Example:**  ```http:\\db.expample.com:6787?username=xyz&password=123&options=select,exampleproj/expamlerow```
 
 For more detailed instructions and examples, check out the documentation at [M31DB Docs](docs/index.html).
 
