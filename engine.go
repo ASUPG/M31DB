@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"runtime"
 	"strings"
 )
 
@@ -15,7 +14,6 @@ func dbengine(args []string) string {
 		args[2] = strings.ReplaceAll(args[2], "/", "\\")
 		file := strings.Replace(args[0], "\\main.exe", "\\db\\", -1)
 		file = file + args[2] + ".json"
-
 		dataCh := make(chan []byte)
 		errCh := make(chan error)
 		go func() {
@@ -33,14 +31,12 @@ func dbengine(args []string) string {
 			}
 			dataCh <- data
 		}()
-
 		select {
 		case data := <-dataCh:
 			returnval = string(data)
 		case err := <-errCh:
 			fmt.Println("Error Fetching Data:", err)
 		}
-		runtime.GC()
 	case "insert":
 		args[2] = strings.ReplaceAll(args[2], "/", "\\")
 		file := strings.Replace(args[0], "\\main.exe", "\\db\\", -1)
@@ -88,7 +84,7 @@ func dbengine(args []string) string {
 				fmt.Println("Error Inserting Data", err)
 			}
 		}
-		runtime.GC()
+
 	case "create":
 		if args[2] != "table" {
 			err := os.Mkdir("db\\"+args[2], 0755)
