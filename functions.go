@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"strings"
 )
 
@@ -50,4 +51,10 @@ func formatJSON(input string) string {
 		ferr(err)
 	}
 	return out.String()
+}
+func input(input string) string {
+	fmt.Printf(input)
+	var data string
+	fmt.Scanln(&data)
+	return data
 }

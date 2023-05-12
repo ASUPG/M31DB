@@ -1,18 +1,22 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"os"
+	"path/filepath"
+	"runtime"
 	"strings"
 )
 
 func dbengine(args []string) string {
 	var returnval string = ""
+	_, file, _, _ := runtime.Caller(0)
+	dir := filepath.Dir(file)
+	dbloc := dir + "\\db\\"
 	switch args[1] {
 	case "select":
 		args[2] = strings.ReplaceAll(args[2], "/", "\\")
-		file := strings.Replace(args[0], "\\main.exe", "\\db\\", -1)
+		file := dbloc
 		file = file + args[2] + ".json"
 		dataCh := make(chan []byte)
 		errCh := make(chan error)
@@ -39,7 +43,7 @@ func dbengine(args []string) string {
 		}
 	case "insert":
 		args[2] = strings.ReplaceAll(args[2], "/", "\\")
-		file := strings.Replace(args[0], "\\main.exe", "\\db\\", -1)
+		file := dbloc
 		file = file + args[2] + ".json"
 
 		dataCh := make(chan []byte)
@@ -66,11 +70,7 @@ func dbengine(args []string) string {
 		go func() {
 			err := os.WriteFile(file, <-dataCh, 00644)
 			if err != nil {
-				if strings.Contains(err.Error(), "file") {
-					errCh <- errors.New("database does not exists")
-				} else {
-					errCh <- err
-				}
+				errCh <- err
 				return
 			}
 			errCh <- nil

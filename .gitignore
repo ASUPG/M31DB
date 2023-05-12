@@ -1,6 +1,5 @@
 db
 Dockerfile
 .dockerignore
-LICENSE
 main.exe
-README
+config.json
