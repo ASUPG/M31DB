@@ -28,19 +28,22 @@ func main() {
 		fmt.Println("Server listening on port 6787...")
 		http.ListenAndServe(":6787", nil)
 	} else if args[1] == "init" {
-		file, err := os.Create("config.json")
-		if err != nil {
-			fmt.Println("Error: ", err)
+		err := os.Mkdir("db", 0755)
+		if err == nil {
+			file, err := os.Create("config.json")
+			if err != nil {
+				fmt.Println("Error: ", err)
+			}
+			usr := input("Define a username: ")
+			pwd := input("Define a password: ")
+			config := make(map[string]string)
+			config["username"] = usr
+			config["password"] = pwd
+			configjson, err := json.Marshal(config)
+			fmt.Println(ferr(err))
+			file.Write([]byte(configjson))
+			file.Close()
 		}
-		usr := input("Define a username: ")
-		pwd := input("Define a password: ")
-		config := make(map[string]string)
-		config["username"] = usr
-		config["password"] = pwd
-		configjson, err := json.Marshal(config)
-		fmt.Println(ferr(err))
-		file.Write([]byte(configjson))
-		file.Close()
 	} else {
 		fmt.Println(dbengine(args))
 	}
