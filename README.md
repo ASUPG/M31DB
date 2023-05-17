@@ -2,8 +2,7 @@
 # M31DB 0.2
 ### The Project is in its alpha realese so expect bugs in it
 ****Before using this for commercial purposes or modyfing,using it on your own projects see the [LICENSE](LICENSE)****<br>
-M31DB is a blazingly fast and easy-to-use database engine that is designed to power large-scale data applications. It is the backbone of AndromedaDB, a cloud-based database service that provides high-performance data storage and retrieval for modern web applications.
-
+M31DB is a blazingly fast and easy-to-use database that is designed to power large-scale data applications. It can Directly be extended Using GO Programming Language or Plugins
 ## Features
 
 - **🔧Easy to use:** M31DB is designed with simplicity and ease-of-use in mind. Its intuitive interface and powerful API make it easy to integrate into your next database and start storing and retrieving data.
@@ -37,5 +36,5 @@ M31DB is an open-source project, and we welcome contributions from the community
 M31DB works in a very simple way. Basically, M31DB is a CLI Tool or a  library to interact with JSON but it hides JSON from you by simplifying it to something that is easier to understand that looks like this (x='y',z='y') yeah this looks like CSV with Keys and Values insted of just Values if you want to know more checkout [How It Works?](https://m31db.github.io/how-it-works.html)
 ## License
 
-M31DB is licensed under the GNU General Public License V3. See the [LICENSE](LICENSE) file for details.
+M31DB is licensed under the BSD-3 Clause License. See the [LICENSE](LICENSE) file for details.
 
