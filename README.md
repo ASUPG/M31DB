@@ -2,7 +2,7 @@
 # M31DB 0.5
 ### The Project is in its alpha realese so expect bugs in it
 ****Before using this for commercial purposes or modyfing,using it on your own projects see the [LICENSE](LICENSE)****<br>
-M31DB is a blazingly fast and easy-to-use database engine that is designed to power large-scale data applications. It is the backbone of AndromedaDB, a cloud-based database service that provides high-performance data storage and retrieval for modern web applications.
+M31DB is a blazingly fast and easy-to-use database that is designed to power large-scale data applications. It can Directly be extended Using GO Programming Language or Plugins
 
 ## Features
 
@@ -20,7 +20,7 @@ M31DB is a blazingly fast and easy-to-use database engine that is designed to po
 To get started with M31DB, you can follow the steps below:
 
 1. Install M31DB on your local machine or server.
-2. Run `m31 init` to initialize M31DB
+2. Run `m31 init` to initialize M31DB or use the command `m31 init [username] [password] [workers]`
 3. Run command  `m31 start` to start M31DB Server listening on port 6787
 4. Now it is all configured to access it you can make a HTTP request to Server running M31DB with the following parameters:
     - **username**: It will be asked on initialization

@@ -11,6 +11,7 @@ import (
 	"sync"
 )
 
+// Defining the Worker Pool
 type WorkerPool struct {
 	// Number of workers in the pool.
 	workerCount int
@@ -56,8 +57,12 @@ func (pool *WorkerPool) worker() {
 
 	pool.waitGroup.Done()
 }
+
+// Main function
 func main() {
+	// Get CLI arguments
 	args := os.Args
+	// Defines the Database Start Command
 	if args[1] == "start" {
 		filecont, err := os.ReadFile("config.json")
 		if err != nil {
@@ -80,7 +85,7 @@ func main() {
 					optionList := strings.Split(options, ",")
 					optionList = append([]string{""}, optionList...)
 					result := dbengine(optionList)
-					fmt.Fprintf(w, result)
+					fmt.Fprintf(w, "%s", result)
 					done <- true // send signal to wait for the worker to complete
 				})
 				<-done // wait for the worker to complete before returning the response
@@ -92,26 +97,30 @@ func main() {
 		fmt.Println(string("\033[33m"), "Press CTRL + C to Stop", string("\033[0m"))
 		http.ListenAndServe(":6787", nil)
 	} else if args[1] == "init" {
-		err := os.Mkdir("db", 0755)
-		if err == nil {
-			file, err := os.Create("config.json")
-			if err != nil {
-				fmt.Println(string("\033[31m"), "Error While Creating config.json", err, string("\033[0m"))
-			}
-			usr := input("Define a username: ")
-			pwd := input("Define a password: ")
-			wk := input("Worker Poool (Define in Numbers)\n(Hint: Higher it is the more concurrent connection it can handel but also use higher resources):")
-			config := make(map[string]string)
-			config["username"] = usr
-			config["password"] = pwd
-			config["wk"] = wk
-			configjson, err := json.Marshal(config)
-			fmt.Println(ferr(err))
-			file.Write([]byte(configjson))
-			file.Close()
+		// Defines the database init command
+		if len(args) == 5 {
+			db_init(args[2], args[3], args[4])
+		} else {
+			usr := db_input("Define a username: ")
+			pwd := db_input("Define a password: ")
+			wk := db_input("Worker Poool (Define in Numbers)\n(Hint: Higher it is the more concurrent connection it can handel but also use higher resources):")
+			db_init(usr, pwd, wk)
 		}
+	} else if args[1] == "run" {
+		// Defines the database run command
+		var narg []string = db_rem(args, 1)
+		fmt.Println(dbengine(narg))
+	} else if args[1] == "help" {
+		// Defines the CLI help command
+		fmt.Println(`
+init: Initialization of the database
+run: runs the database query given
+start: starts the database server
+help: shows this menu
+		`)
 	} else {
-		fmt.Println(dbengine(args))
+		// Shows The Error when the command is not recognized
+		fmt.Println(string("\033[31m"), "Unknown Command", args[1], "Please Run", "m31 help", string("\033[0m"))
 	}
 	runtime.GC()
 }
