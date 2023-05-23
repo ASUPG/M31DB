@@ -1,5 +1,5 @@
 
-# M31DB 0.5
+# M31DB 0.6
 ### The Project is in its alpha realese so expect bugs in it
 ****Before using this for commercial purposes or modyfing,using it on your own projects see the [LICENSE](LICENSE)****<br>
 M31DB is a blazingly fast and easy-to-use database that is designed to power large-scale data applications. It can Directly be extended Using GO Programming Language or Plugins
