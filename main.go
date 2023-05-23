@@ -76,13 +76,16 @@ func main() {
 			os.Exit(1)
 		}
 		pooln, _ := strconv.ParseInt(config["wk"], 10, 64)
+		usr, pwd := config["username"], config["password"]
 		pool := NewWorkerPool(int(pooln))
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 			options := r.URL.Query().Get("options")
-			if options != "" {
+			pwdquery := r.URL.Query().Get("pwd")
+			usrquery := r.URL.Query().Get("usr")
+			if options != "" && pwdquery == pwd && usrquery == usr {
 				done := make(chan bool)
 				pool.Submit(func() {
-					optionList := strings.Split(options, ",")
+					optionList := strings.Split(options, "||")
 					optionList = append([]string{""}, optionList...)
 					result := dbengine(optionList)
 					fmt.Fprintf(w, "%s", result)
@@ -116,8 +119,16 @@ func main() {
 init: Initialization of the database
 run: runs the database query given
 start: starts the database server
+version: shows hte version
 help: shows this menu
 		`)
+	} else if args[1] == "version" {
+		fmt.Println(string("\033[33m"), "M31DB Version 0.6", string("\033[0m"))
+	} else if args[1] == "plugin" {
+		fmt.Println("Coming Soon")
+		switch args[2] {
+
+		}
 	} else {
 		// Shows The Error when the command is not recognized
 		fmt.Println(string("\033[31m"), "Unknown Command", args[1], "Please Run", "m31 help", string("\033[0m"))
