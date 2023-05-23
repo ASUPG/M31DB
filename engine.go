@@ -61,7 +61,14 @@ func dbengine(args []string) string {
 				errCh <- err
 				return
 			}
-			argsmod := convandrotojson(args[3])
+			var argsmod string
+			if args[3] != "json" {
+				argsmod = convandrotojson(args[3])
+				fmt.Println(argsmod)
+			} else if args[3] == "json" {
+				argsmod = formatJSON(args[4])
+			} else {
+			}
 			mddata := string(data)
 			modifieddata := strings.ReplaceAll(mddata, "]", "") + ",\n" + argsmod + "]"
 			dataCh <- []byte(modifieddata)
@@ -86,14 +93,14 @@ func dbengine(args []string) string {
 		}
 
 	case "create":
-		if args[2] != "table" {
-			err := os.Mkdir("db\\"+args[2], 0755)
+		if args[2] == "cluster" {
+			err := os.Mkdir("db\\"+args[3], 0755)
 			if err == nil {
 				returnval = "Done Successfuly"
 			} else {
 				fmt.Println("Database Already exists")
 			}
-		} else if args[2] == "table" {
+		} else if args[2] == "star" {
 			filename := strings.Replace(args[3], "/", "\\", -1)
 			file, err := os.Create("db\\" + filename + ".json")
 			fmt.Println(ferr(err))
@@ -103,7 +110,7 @@ func dbengine(args []string) string {
 			file.Close()
 			fmt.Println("Done Successfuly")
 		} else {
-			fmt.Println("\033[31mError:Can't recognize what you are trying to create!")
+			fmt.Println(string("\033[31m"), "Error:Can't recognize what you are trying to create!", string("\033[0m"))
 		}
 
 		// case "delete":
@@ -114,6 +121,20 @@ func dbengine(args []string) string {
 		// 	nfilecontsup := string(filecontsup)
 		// 	nfilecontsup = strings.Replace(nfilecontsup, "\n", "", -1)
 		// 	fmt.Println(nfilecontsup)
+	case "delete":
+		file = strings.ReplaceAll(args[2], "/", "\\")
+		file = dbloc + file + ".json"
+		// Formatter
+		go func() {
+			datab, err := os.ReadFile(file)
+			returnval = ferr(err)
+			mdata := formatJSON(string(datab))
+			err = os.WriteFile(file, []byte(mdata), 0644)
+			returnval = ferr(err)
+		}()
+		go func() {
+
+		}()
 	}
 	return returnval
 }
