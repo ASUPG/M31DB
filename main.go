@@ -63,6 +63,9 @@ func main() {
 	// Get CLI arguments
 	args := os.Args
 	// Defines the Database Start Command
+	if args[1] == "test" {
+		fmt.Println(("[{\"name\":\"" + args[2] + "\"}]"))
+	}
 	if args[1] == "start" {
 		filecont, err := os.ReadFile("config.json")
 		if err != nil {

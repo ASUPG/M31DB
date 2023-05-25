@@ -22,18 +22,18 @@ func dbengine(args []string) string {
 		errCh := make(chan error)
 		go func() {
 			datab, err := os.ReadFile(file)
-			returnval = ferr(err)
-			mdata := formatJSON(string(datab))
-			err = os.WriteFile(file, []byte(mdata), 0644)
-			returnval = ferr(err)
-		}()
-		go func() {
-			data, err := os.ReadFile(file)
 			if err != nil {
 				errCh <- err
 				return
+			} else {
+				dataCh <- datab
+				err = os.WriteFile(file, datab, 0644)
+				if err != nil {
+					errCh <- err
+				} else {
+					errCh <- nil
+				}
 			}
-			dataCh <- data
 		}()
 		select {
 		case data := <-dataCh:
@@ -47,13 +47,6 @@ func dbengine(args []string) string {
 		file = file + args[2] + ".json"
 
 		dataCh := make(chan []byte)
-		go func() {
-			datab, err := os.ReadFile(file)
-			returnval = ferr(err)
-			mdata := formatJSON(string(datab))
-			err = os.WriteFile(file, []byte(mdata), 0644)
-			returnval = ferr(err)
-		}()
 		errCh := make(chan error)
 		go func() {
 			data, err := os.ReadFile(file)
@@ -67,11 +60,10 @@ func dbengine(args []string) string {
 				fmt.Println(argsmod)
 			} else if args[3] == "json" {
 				argsmod = formatJSON(args[4])
-			} else {
 			}
 			mddata := string(data)
 			modifieddata := strings.ReplaceAll(mddata, "]", "") + ",\n" + argsmod + "]"
-			dataCh <- []byte(modifieddata)
+			dataCh <- []byte(formatJSON(modifieddata))
 		}()
 
 		go func() {
@@ -101,26 +93,22 @@ func dbengine(args []string) string {
 				fmt.Println("Database Already exists")
 			}
 		} else if args[2] == "star" {
-			filename := strings.Replace(args[3], "/", "\\", -1)
-			file, err := os.Create("db\\" + filename + ".json")
-			fmt.Println(ferr(err))
-			n, err := file.Write([]byte(formatJSON("[{\"name\":\"" + args[3] + "\"}]")))
-			print(n)
-			fmt.Println(ferr(err))
-			file.Close()
-			fmt.Println("Done Successfuly")
+			filename := "db\\" + strings.Replace(args[3], "/", "\\", -1) + ".json"
+			args[3] = strings.ReplaceAll(args[3], "\\", "/")
+			filename = strings.ReplaceAll(filename, "\\", "/")
+			data := formatJSON("{\"name\":\"" + args[3] + "\"" + "," + "\"location\":" + "\"" + filename + "\"" + "}")
+			data = strings.ReplaceAll(data, "\\", "/")
+			err := os.WriteFile(filename, []byte(data), 0644)
+			if err != nil {
+				returnval = ferr(err)
+			} else {
+				returnval = "Done Successfuly"
+			}
+
 		} else {
 			fmt.Println(string("\033[31m"), "Error:Can't recognize what you are trying to create!", string("\033[0m"))
 		}
 
-		// case "delete":
-		// 	file := strings.Replace(args[0], "\\main.exe", "\\db\\", -1)
-		// 	file = file + args[2] + ".json"
-		// 	filecontsup, err := os.ReadFile(file)
-		// 	returnval = ferr(err)
-		// 	nfilecontsup := string(filecontsup)
-		// 	nfilecontsup = strings.Replace(nfilecontsup, "\n", "", -1)
-		// 	fmt.Println(nfilecontsup)
 	case "delete":
 		file = strings.ReplaceAll(args[2], "/", "\\")
 		file = dbloc + file + ".json"
@@ -133,7 +121,17 @@ func dbengine(args []string) string {
 			returnval = ferr(err)
 		}()
 		go func() {
-
+			var csvtojson string
+			if args[3] == "json" {
+				fmt.Println("json: ", true)
+			} else if args[3] != "json" {
+				csvtojson = formatJSON(convandrotojson(args[3]))
+				databytes, err := os.ReadFile(file)
+				returnval = ferr(err)
+				mdata := strings.Replace(string(databytes), csvtojson+",", "", -1)
+				fmt.Println(mdata)
+				fmt.Println("json:", false)
+			}
 		}()
 	}
 	return returnval

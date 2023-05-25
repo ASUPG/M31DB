@@ -54,7 +54,7 @@ func formatJSON(input string) string {
 	var out bytes.Buffer
 	err := json.Indent(&out, []byte(input), "", "  ")
 	if err != nil {
-		ferr(err)
+		return ferr(err)
 	}
 	return out.String()
 }
