@@ -1,4 +1,4 @@
-// Do Not delete this fikle or any code in it
+// Do Not delete this file or any code in it
 package main
 
 import (
