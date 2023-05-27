@@ -31,7 +31,7 @@ For more detailed instructions and examples, check out the documentation at [M31
 
 ## Contributing
 
-M31DB is an open-source project, and we welcome contributions from the community. If you would like to contribute, please check out our [contributing guidelines](https://github.com/M31DB/contributing) and [code of conduct](https://github.com/ASUPG/M31DB/blob/main/CODE_OF_CONDUCT.md).
+M31DB is an open-source project, and we welcome contributions from the community. If you would like to contribute, please check out our [contributing guidelines](https://github.com/ASUPG/M31DB/blob/main/CONTRIBUTING.md) and [code of conduct](https://github.com/ASUPG/M31DB/blob/main/CODE_OF_CONDUCT.md).
 ## How it Works
 M31DB works in a very simple way. Basically, M31DB is a CLI Tool or a  library to interact with JSON but it hides JSON from you by simplifying it to something that is easier to understand that looks like this (x='y',z='y') yeah this looks like CSV with Keys and Values insted of just Values if you want to know more checkout [How It Works?](https://m31db.github.io/how-it-works.html)
 ## License
