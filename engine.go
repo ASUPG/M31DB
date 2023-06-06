@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -96,7 +97,7 @@ func dbengine(args []string) string {
 			filename := "db\\" + strings.Replace(args[3], "/", "\\", -1) + ".json"
 			args[3] = strings.ReplaceAll(args[3], "\\", "/")
 			filename = strings.ReplaceAll(filename, "\\", "/")
-			data := formatJSON("{\"name\":\"" + args[3] + "\"" + "," + "\"location\":" + "\"" + filename + "\"" + "}")
+			data := formatJSON("[{\"name\":\"" + args[3] + "\"" + "," + "\"location\":" + "\"" + filename + "\"" + "}]")
 			data = strings.ReplaceAll(data, "\\", "/")
 			err := os.WriteFile(filename, []byte(data), 0644)
 			if err != nil {
@@ -112,25 +113,26 @@ func dbengine(args []string) string {
 	case "delete":
 		file = strings.ReplaceAll(args[2], "/", "\\")
 		file = dbloc + file + ".json"
-		// Formatter
+		var csvtojson string
+		var data []map[string]string
+		jsontoarr := make(map[string]string)
 		go func() {
-			datab, err := os.ReadFile(file)
-			returnval = ferr(err)
-			mdata := formatJSON(string(datab))
-			err = os.WriteFile(file, []byte(mdata), 0644)
-			returnval = ferr(err)
-		}()
-		go func() {
-			var csvtojson string
 			if args[3] == "json" {
 				fmt.Println("json: ", true)
 			} else if args[3] != "json" {
 				csvtojson = formatJSON(convandrotojson(args[3]))
 				databytes, err := os.ReadFile(file)
 				returnval = ferr(err)
-				mdata := strings.Replace(string(databytes), csvtojson+",", "", -1)
-				fmt.Println(mdata)
-				fmt.Println("json:", false)
+				go func() {
+					done := make(chan bool)
+					err = json.Unmarshal(databytes, &data)
+					returnval = ferr(err)
+					<-done
+				}()
+				err = json.Unmarshal([]byte(csvtojson), &jsontoarr)
+				returnval = ferr(err)
+				data = append(data, jsontoarr)
+				fmt.Println(data)
 			}
 		}()
 	}
