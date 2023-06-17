@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-DAPTPBUG">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M31DB - Contribution Guidelines</title>
+    
+<link rel="stylesheet" href="/_astro/code-of-conduct.b54bb9b0.css" />
+<link rel="stylesheet" href="/_astro/contribution.5e246b28.css" /></head>
+<body class="astro-DAPTPBUG">
+    <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="9iDo3" component-url="/_astro/nav.ba5f452f.js" component-export="default" renderer-url="/_astro/client.c4e17359.js" props="{&quot;name&quot;:[0,&quot;M31DB&quot;],&quot;class&quot;:[0,&quot;astro-DAPTPBUG&quot;]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;NavBar&quot;,&quot;value&quot;:true}" await-children=""><div class="nav-wrapper svelte-nhq0ue" style="position:fixed;"><nav class="navbar svelte-nhq0ue"><h1 class="brandlabel svelte-nhq0ue">M31DB</h1>
+    <div class="icon svelte-nhq0ue"><button type="button" class="moreicon svelte-nhq0ue"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff" height="30px" width="30px" version="1.1" id="Capa_1" viewBox="0 0 60 60" xml:space="preserve"><g><path d="M8,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S12.411,22,8,22z"></path><path d="M52,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S56.411,22,52,22z"></path><path d="M30,22c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S34.411,22,30,22z"></path></g></svg></button></div></nav></div>
+<sidebar id="sidebar" style="position:absolute;" class="svelte-nhq0ue"><div class="head svelte-nhq0ue"><h1 class="svelte-nhq0ue">M31DB</h1>
+    <a href="https://github.com/ASUPG/M31DB" target="_blank" class="svelte-nhq0ue"><img src="github.svg" alt=""></a></div>
+  <div class="sideul svelte-nhq0ue"><a target="_blank" href="/" class="drop-item svelte-nhq0ue">Home</a>
+    <a target="_blank" href="#" class="drop-item svelte-nhq0ue">Docs</a>
+    <a target="_blank" href="#" class="drop-item svelte-nhq0ue">Report an Issue</a>
+    <a target="_blank" href="#" class="drop-item svelte-nhq0ue">Feedback</a>
+    <a target="_blank" href="#" class="drop-item svelte-nhq0ue">Donate</a></div>
+  <h1 class="svelte-nhq0ue">Contributing</h1>
+  <div class="sideul svelte-nhq0ue"><a target="_blank" href="/contribution/licensing" class="drop-item svelte-nhq0ue">License</a>
+    <a target="_blank" href="/contribution/contribution" class="drop-item svelte-nhq0ue">Contribution Guidelines</a>
+    <a target="_blank" href="/contribution/code-of-conduct" class="drop-item svelte-nhq0ue">Code of Conduct</a></div>
+  <h1 class="svelte-nhq0ue">Community</h1>
+  <div class="sideul svelte-nhq0ue"><a target="_blank" href="https://www.reddit.com/r/M31DB/" class="drop-item svelte-nhq0ue">Reddit</a>
+    <a target="_blank" href="https://github.com/ASUPG/M31DB/discussions" class="drop-item svelte-nhq0ue">Github</a></div>
+</sidebar></astro-island>
+    <main class="astro-DAPTPBUG">
+        <h1 class="astro-DAPTPBUG">M31DB - Contribution Guidelines</h1>
+        <p>Thank you for your interest in contributing to the M31DB project! We appreciate your efforts to help improve and enhance our database management system. To ensure a collaborative and efficient experience for all contributors, we have established the following guidelines:</p>
+<ol>
+<li>
+<p>Familiarize Yourself with M31DB:</p>
+<ul>
+<li>Take the time to understand M31DB’s purpose, architecture, and functionality. Read the documentation available in the repository to gain a good understanding of the system.</li>
+<li>Review the existing issues and pull requests to avoid duplicating efforts or proposing changes that have already been addressed.</li>
+</ul>
+</li>
+<li>
+<p>Create an Issue:</p>
+<ul>
+<li>Before starting any significant contribution, create an issue to discuss the proposed change or enhancement. Clearly describe the problem you intend to solve or the feature you plan to add. This allows for valuable feedback and helps coordinate efforts.</li>
+</ul>
+</li>
+<li>
+<p>Fork the Repository:</p>
+<ul>
+<li>Fork the M31DB repository to your GitHub account.</li>
+<li>Create a new branch for your contribution. Use a descriptive branch name that summarizes the purpose of your changes.</li>
+</ul>
+</li>
+<li>
+<p>Code Development:</p>
+<ul>
+<li>Adhere to the project’s coding style and guidelines. Maintain consistency with the existing codebase.</li>
+<li>Write clear and concise commit messages, summarizing the changes made in each commit.</li>
+<li>Break your changes into logical and manageable commits. Each commit should focus on a specific aspect of the overall contribution.</li>
+<li>Include tests for your code changes. Ensure that existing tests pass and add new tests where applicable to maintain or improve code quality.</li>
+</ul>
+</li>
+<li>
+<p>Submitting Pull Requests:</p>
+<ul>
+<li>Once you have completed your changes, submit a pull request from your branch to the main repository’s master branch.</li>
+<li>Provide a clear and descriptive title for your pull request.</li>
+<li>Include a detailed description of the changes made, the problem addressed, or the new feature added.</li>
+<li>Reference the relevant issue(s) in your pull request description, if applicable.</li>
+<li>Be prepared to address any feedback or suggestions during the review process.</li>
+</ul>
+</li>
+<li>
+<p>Collaboration and Communication:</p>
+<ul>
+<li>Be respectful and professional when interacting with other contributors, maintainers, and users of the project.</li>
+<li>Participate in discussions, provide constructive feedback, and help review other pull requests when possible.</li>
+<li>Respond to feedback and comments on your contributions promptly and thoughtfully.</li>
+<li>Keep communication channels open and transparent, ensuring that discussions take place in the appropriate forums, such as issue comments or pull request discussions.</li>
+</ul>
+</li>
+</ol>
+<p>By following these contributing guidelines, you will effectively contribute to the development and improvement of M31DB. Your contributions are highly valued, and we appreciate your dedication to enhancing our database management system for the benefit of the community.</p>
+    </main>
+</body></html>
